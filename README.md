@@ -1,6 +1,8 @@
 # nltk_sentiment_analysis
 Sentiment analysis algorithms applied to the NLTK movie_reviews dataset.
 
+In this example several classification algorithms are launched. However, considering that each one has its own results (sometimes they are very different), a combination of their performance has been developed as a voting strategy.
+
 ##Tools needed and installation instructions (Ubuntu):
 ###1. Python
 First examples have been tested with Python 2.7.9 under a Linux 64 bit architercture. However, in order to use the specific 'statistics' package, Python3 is needed. Python3 comes already with the default Ubuntu installation, so to run it on the terminal:
