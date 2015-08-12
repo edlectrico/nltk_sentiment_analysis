@@ -19,6 +19,6 @@ print(s.sentiment("I love minions"))
 ###The Output
 If everything is fine, it should give you an output with the classification for the tweet as 'pos' or 'neg' and the level of confidence for each classification:
 ```
-('pos', 1.0)
 ('neg', 1.0)
+('pos', 1.0)
 ```
