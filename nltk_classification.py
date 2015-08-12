@@ -63,12 +63,12 @@ featuresets = [(find_features(rev), category) for (rev, category) in documents]
 training_set = featuresets[:1900]
 testing_set =  featuresets[1900:]
 
-#classifier = nltk.NaiveBayesClassifier.train(training_set)
-
+classifier = nltk.NaiveBayesClassifier.train(training_set)
+'''
 classifier_f = open("naivebayes.pickle","rb")
 classifier = pickle.load(classifier_f)
 classifier_f.close()
-
+'''
 
 
 
