@@ -2,6 +2,7 @@
 This repo provides the needed tools to perform sentiment analysis to data collected from Twitter. In this first version the data is appended to the test_tweet.py script as a string.
 
 ###Contents
+* data/: Two files with positive and negative opinions from different movies to train the classifiers.
 * sentiment_train.py: It creates, configures and trains different classification algorithms to finally generate a classifier from the results of the others (as a voting strategy). Notice that the classifiers are saved to a 'pickled_algos' folder, so I highly recommend that you create that folder (I do not provide the algorithm files as they are automatically generated when running this script).
 * sentiment_mod.py: It loads all algorithms (from the 'pickled_algos' folder) and defines a global input method to make the classification of the desired text:
 ```
