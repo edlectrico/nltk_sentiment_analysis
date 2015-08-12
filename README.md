@@ -65,7 +65,7 @@ sudo pip install --user --install-option="--prefix=" -U scikit-learn
 ##Running the example
 Obviously, if you've been through the installation steps you've noticed that Python 3 is required. To run the example you just need to run the following command:
 ```
-$ python3 nltk_classification.py
+$ python3 nltk_movies_classification.py
 ```
 If you don't want to train each classifier each time, there is an example within the code of how to save each classifier to an external pickle file. For the NaiveBayes classifier, for example, you should do:
 ```
