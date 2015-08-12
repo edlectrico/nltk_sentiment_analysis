@@ -11,7 +11,7 @@ from sklearn.svm import SVC, LinearSVC, NuSVC
 from nltk.classify import ClassifierI
 from statistics import mode
 
-
+# Voting strategy to combine different algorithms
 class VoteClassifier(ClassifierI):
     def __init__(self, *classifiers):
         self._classifiers = classifiers
@@ -60,20 +60,27 @@ def find_features(document):
 
 featuresets = [(find_features(rev), category) for (rev, category) in documents]
         
-training_set = featuresets[:1900]
-testing_set =  featuresets[1900:]
+training_set = featuresets[:1900] #1900 opinions to train
+testing_set =  featuresets[1900:] #Just 100 for testing
 
+# Training NaiveBayes
 classifier = nltk.NaiveBayesClassifier.train(training_set)
 '''
+#Saving the classifier to a pickle file
+save_classifier = open("naivebayes.pickle","wb")
+pickle.dump(classifier, save_classifier)
+save_classifier.close()
+
+# Loading the classifier from pickle file
 classifier_f = open("naivebayes.pickle","rb")
 classifier = pickle.load(classifier_f)
 classifier_f.close()
 '''
-
-
-
-print("Original Naive Bayes Algo accuracy percent:", (nltk.classify.accuracy(classifier, testing_set))*100)
+# Printing the most informative features
 classifier.show_most_informative_features(15)
+
+# Launching all the different classifiers
+print("Original Naive Bayes Algo accuracy percent:", (nltk.classify.accuracy(classifier, testing_set))*100)
 
 MNB_classifier = SklearnClassifier(MultinomialNB())
 MNB_classifier.train(training_set)
@@ -103,14 +110,8 @@ NuSVC_classifier = SklearnClassifier(NuSVC())
 NuSVC_classifier.train(training_set)
 print("NuSVC_classifier accuracy percent:", (nltk.classify.accuracy(NuSVC_classifier, testing_set))*100)
 
-
-voted_classifier = VoteClassifier(classifier,
-                                  NuSVC_classifier,
-                                  LinearSVC_classifier,
-                                  SGDClassifier_classifier,
-                                  MNB_classifier,
-                                  BernoulliNB_classifier,
-                                  LogisticRegression_classifier)
+# Generating the votes
+voted_classifier = VoteClassifier(classifier, NuSVC_classifier, LinearSVC_classifier, SGDClassifier_classifier, MNB_classifier, BernoulliNB_classifier, LogisticRegression_classifier)
 
 print("voted_classifier accuracy percent:", (nltk.classify.accuracy(voted_classifier, testing_set))*100)
 
