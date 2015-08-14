@@ -2,38 +2,44 @@ import sentiment_mod as s
 import tweet_preprocessor as prep
 
 class TweetGeo:
-	def __init__(self, text, created_at, location):
-        	self.text = text
-        	self.created_at = created_at
-        	self.location = location
+	def __init__(self, id, created_at, text, time_zone, latitude, longitude, country_code):
+		self.id = id
+		self.text = text
+		self.created_at = created_at
+		self.time_zone = time_zone
+		self.latitude = latitude
+		self.longitude = longitude
+		self.country_code = country_code
 
-'''
-The geo_tweets.csv has been downloaded from a Hive query, choosing
-from thousands of tweets the text, created_at and location fields.
-To do so, a new table in Hive is needed, created as follows:
-CREATE TABLE geo_tweets AS SELECT text, created_at, location FROM tweets;
-When the table is created we download the result .csv from HUE (it allows
-to download queries results in several formats) through a
-SELECT * FROM geo_tweets;
-'''
-tweets = open('data/geo_tweets.csv', 'r')
+#tweets = open('data/geo_tweets.csv', 'r')
+tweets = open('data/tweets_1000_geo_clean.csv', 'r')
 # We are going to create a new .csv file which will contain
 # the classification of the tweet (pos|neg), the date and
 # the location
-classified_tweets = open('output/classified_tweets.csv', 'a')
+classified_tweets = open('output/classified_1000_tweets.csv', 'a')
 
-# l = 'text, created_at, location'
+# l = 'created_at, text, time_zone, latitude, longitude, contry_code'
+#cont = 0
 for l in tweets:
-	# We split each line by comma from the end of the line (rsplit)
-	# and taking 2 commas: l.rsplit(',', 2) -> ['text', ' created_at', ' location']
-	location = l.rsplit(',', 2)[2]   # pos[2] = ' location'
-	created_at = l.rsplit(',', 2)[1] # pos[1] = ' created_at' 
-	text = l.rsplit(',', 2)[0]	 # pos[0] = 'text'
-	#text = l.replace(location, "").replace(created_at, "")
-	text = prep.processTweet(text) # Deleting URLs, usernames, etc
-	tg=TweetGeo(text, created_at, location)
-	tweet_classification = s.sentiment(tg.text)[0]
-	classified_tweets.write(tweet_classification +',' + tg.created_at + ',' + tg.location)
+#	if cont != 0:
+		country_code = l.rsplit(',', 6)[6]
+		longitude = l.rsplit(',', 6)[5]
+		latitude = l.rsplit(',', 6)[4]
+		time_zone = l.rsplit(',', 6)[3] 
+		text = l.rsplit(',', 6)[2]  
+		created_at = l.rsplit(',', 6)[1]
+		id = l.rsplit(',', 6)[0]		
+
+		text = prep.processTweet(text) # Deleting URLs, usernames, etc
+		#print(text)
+		tg=TweetGeo(id, created_at, text, time_zone, latitude, longitude, country_code)
+		tweet_classification = s.sentiment(tg.text)[0]
+		#print(tweet_classification)
+		classified_tweets.write(tweet_classification + ',' + tg.id + ',' + tg.created_at + ',' + tg.text + ',' + tg.time_zone + ',' + tg.latitude + ',' + tg.longitude + ',' + tg.country_code)
+#		cont+=1
+#	else:
+#		cont += 1
+#		break
 
 tweets.close()
 classified_tweets.close()
