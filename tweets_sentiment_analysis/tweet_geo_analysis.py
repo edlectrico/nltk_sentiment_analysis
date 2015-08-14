@@ -20,7 +20,7 @@ tweets = open('data/geo_tweets.csv', 'r')
 # We are going to create a new .csv file which will contain
 # the classification of the tweet (pos|neg), the date and
 # the location
-classified_tweets = open('output/classified_tweets.csv', 'a')
+classified_tweets = open('output/classified_tweets2.csv', 'a')
 
 # l = 'text, created_at, location'
 for l in tweets:
@@ -33,7 +33,7 @@ for l in tweets:
 	text = prep.processTweet(text) # Deleting URLs, usernames, etc
 	tg=TweetGeo(text, created_at, location)
 	tweet_classification = s.sentiment(tg.text)[0]
-	classified_tweets.write(tweet_classification +', ' + tg.created_at + ', ' + tg.location + '\n')
+	classified_tweets.write(tweet_classification +',' + tg.created_at + ',' + tg.location)
 
 tweets.close()
 classified_tweets.close()
