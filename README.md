@@ -3,7 +3,7 @@ Sentiment analysis algorithms applied to different datasets using NLTK
 
 This repository contains several subprojects which are examples of how to perform sentiment analysis from different datasets. Each folder contains a different project.
 
-##Tools needed and installation instructions (Ubuntu):
+##Used tools and installation instructions (Ubuntu):
 ###1. Python
 First examples have been tested with Python 2.7.9 under a Linux 64 bit architercture. However, in order to use the specific 'statistics' package, Python3 is needed. Python3 comes already with the default Ubuntu installation, so to run it on the terminal:
 ```
