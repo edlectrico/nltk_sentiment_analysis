@@ -12,7 +12,8 @@ def processTweet(tweet):
     tweet = re.sub('@[^\s]+','AT_USER',tweet)
     tweet = re.sub('[\s]+', ' ', tweet)
     tweet = re.sub(r'#([^\s]+)', r'\1', tweet)
+    tweet = re.sub(',',"", tweet)
     tweet = tweet.strip('\'"')
-    print (tweet)
+    #print (tweet)
     return tweet
 
