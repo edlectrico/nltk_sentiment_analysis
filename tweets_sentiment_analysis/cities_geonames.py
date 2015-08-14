@@ -1,3 +1,5 @@
+import codecs
+
 class City:
 	def __init__(self, geonameid, name, latitude, longitude, country_code, population, elevation, timezone):
 		self.geonameid=geonameid
@@ -9,8 +11,8 @@ class City:
 		self.elevation=elevation
 		self.timezone=timezone
 		
-cities_file = open('data/cities1000.txt', 'r')
-cities_out = open('output/cities_formatted.csv', 'a')
+cities_file = codecs.open('data/cities1000.txt', 'r', 'utf-8')
+cities_out = codecs.open('output/cities_formatted.csv', 'a', 'utf-8')
 
 for c in cities_file:
 	city = c.rsplit('\t', 19) #19 colums (see http://download.geonames.org/export/dump/)
