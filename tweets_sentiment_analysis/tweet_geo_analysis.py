@@ -20,7 +20,7 @@ tweets = open('data/geo_tweets.csv', 'r')
 # We are going to create a new .csv file which will contain
 # the classification of the tweet (pos|neg), the date and
 # the location
-classified_tweets = open('output/classified_tweets2.csv', 'a')
+classified_tweets = open('output/classified_tweets.csv', 'a')
 
 # l = 'text, created_at, location'
 for l in tweets:
