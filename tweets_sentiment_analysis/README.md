@@ -1,5 +1,5 @@
-## Sentiment Analysis from Twitter
-This repo provides the needed tools to perform sentiment analysis to data collected from Twitter. In this first version the data is appended to the test_tweet.py script as a string.
+## Sentiment Analysis from Twitter Data
+This repo provides the needed tools to perform sentiment analysis to data collected from Twitter.
 
 ###Contents
 * **data/**: Mainly, it contains two files with positive and negative opinions from different movies to train the classifiers. It also contains the geo_tweets.csv for the tweet_geo_analysis.py script and the cities_formatted.csv with formatted information about cities with more than 1000 people, including name, latitude and longitude, country code, etc.
