@@ -46,3 +46,7 @@ print(s.sentiment("I love minions"))
   - The city from where it has been tweeted
   - The coordinates
   - The country code or time zone
+  ```
+> python3 tweet_geo_analysis.py
+10664
+```
