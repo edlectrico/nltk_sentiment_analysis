@@ -31,8 +31,18 @@ print(s.sentiment("I hate all minions"))
 print(s.sentiment("I love minions"))
 ```
 ###The Output
-If everything is fine, it should give you an output with the classification for the tweet as 'pos' or 'neg' and the level of confidence for each classification:
+* **test_tweet.py**: It contains sample text strings. If everything is fine, it should give you an output with the classification for the tweet as 'pos' or 'neg' and the level of confidence for each classification:
 ```
+> python3 test_tweet.py
 ('neg', 1.0)
 ('pos', 1.0)
 ```
+* **tweet_geo_analysis.py**: It reads from 'data/tweets_1000_geo_clean.csv' and generates a new output file ('output/classified_1000_tweets.csv') with the following fields:
+  - The tweet sentiment classification (pos or neg)
+  - The tweet id
+  - The creation date
+  - The language of the tweet (not 100% accurate)
+  - The text of the tweet
+  - The city from where it has been tweeted
+  - The coordinates
+  - The country code or time zone
