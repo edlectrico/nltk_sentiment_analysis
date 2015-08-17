@@ -1,5 +1,6 @@
 import sentiment_mod as s
 import tweet_preprocessor as prep
+import language_detector as lang
 
 class TweetGeo:
 	def __init__(self, id, created_at, text, time_zone, latitude, longitude, country_code):
@@ -11,7 +12,6 @@ class TweetGeo:
 		self.longitude = longitude
 		self.country_code = country_code
 
-#tweets = open('data/geo_tweets.csv', 'r')
 tweets = open('data/tweets_1000_geo_clean.csv', 'r')
 # We are going to create a new .csv file which will contain
 # the classification of the tweet (pos|neg), the date and
@@ -31,11 +31,10 @@ for l in tweets:
 		id = l.rsplit(',', 6)[0]		
 
 		text = prep.processTweet(text) # Deleting URLs, usernames, etc
-		#print(text)
 		tg=TweetGeo(id, created_at, text, time_zone, latitude, longitude, country_code)
+		tweet_lang = lang.detect_language(tg.text)
 		tweet_classification = s.sentiment(tg.text)[0]
-		#print(tweet_classification)
-		classified_tweets.write(tweet_classification + ',' + tg.id + ',' + tg.created_at + ',' + tg.text + ',' + tg.time_zone + ',' + tg.latitude + ',' + tg.longitude + ',' + tg.country_code)
+		classified_tweets.write(tweet_classification + ',' + tg.id + ',' + tg.created_at + ',' + tweet_lang + ',' + tg.text + ',' + tg.time_zone + ',' + tg.latitude + ',' + tg.longitude + ',' + tg.country_code)
 #		cont+=1
 #	else:
 #		cont += 1
