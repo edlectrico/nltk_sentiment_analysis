@@ -4,6 +4,11 @@ This repo provides the needed tools to perform sentiment analysis to data collec
 ###Contents
 * **data/**: Mainly, it contains two files with positive and negative opinions from different movies to train the classifiers. It also contains the geo_tweets.csv for the tweet_geo_analysis.py script and the cities_formatted.csv with formatted information about cities with more than 1000 people, including name, latitude and longitude, country code, etc.
 * **cities_geonames.py**: A small script which reads each line from data/cities1000.txt and generates a formatted output of cities and their most relevant information to output/formatted_cities.csv.
+* **language_detector.py**: A simple tool to determine the language of the text. Usage:
+```
+> python3 language_detector.py 'Hi, this is a language test'
+english
+```
 * **tweet_geo_analysis.py**: This script offers a method to analyse a .csv file of tweets generated with Hive. It reads each line (geo_tweet) and parses the text determining if is positive or negative. Finally, it stores each geo_tweet as a new line containing the sentiment classification, creation date and location.
 ```
 We have thousands of tweets loaded in HDFS. With Hive we create a tweets table which contains every field of the tweet structure. 
