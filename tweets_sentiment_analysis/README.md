@@ -9,7 +9,7 @@ This repo provides the needed tools to perform sentiment analysis to data collec
 > python3 language_detector.py 'Hi, this is a language test'
 english
 ```
-* **tweet_geo_analysis.py**: This script offers a method to analyse a .csv file of tweets generated with Hive. It reads each line (geo_tweet) and parses the text determining if is positive or negative. Finally, it stores each geo_tweet as a new line containing the sentiment classification, creation date and location.
+* **tweet_geo_analysis.py**: This script offers a method to analyse a .csv file of tweets (in this case 'data/tweets_1000_geo_clean.csv') generated with Hive. It reads each line (geo_tweet) and parses the text determining if is positive or negative. Finally, it stores each geo_tweet as a new line containing the sentiment classification, creation date and location (see the output file 'output/classified_1000_tweets.csv').
 ```
 We have thousands of tweets loaded in HDFS. With Hive we create a tweets table which contains every field of the tweet structure. 
 Then, we create a geo_tweets table which contains only the text, creation date and location of each tweet of the tweets table. 
