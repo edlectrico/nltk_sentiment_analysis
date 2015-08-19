@@ -2,7 +2,10 @@
 This repo provides the needed tools to perform sentiment analysis to data collected from Twitter.
 
 ###Contents
-* **data/**: Mainly, it contains two files with positive and negative opinions from different movies to train the classifiers. It also contains the geo_tweets.csv for the tweet_geo_analysis.py script and the cities_formatted.csv with formatted information about cities with more than 1000 people, including name, latitude and longitude, country code, etc.
+* **data/**: It contains:
+ - two files with positive and negative opinions from different movies to train the classifiers. 
+ - the geo_tweets.csv for the tweet_geo_analysis.py script and the cities_formatted.csv with formatted information about cities with more than 1000 people, including name, latitude and longitude, country code, etc.
+ - the all_words.txt file, which includes a tuple of tweet_id and word for each tweet text written in english.
 * **cities_geonames.py**: A small script which reads each line from data/cities1000.txt and generates a formatted output of cities and their most relevant information to output/formatted_cities.csv.
 * **language_detector.py**: A simple tool to determine the language of the text. Usage:
 ```
