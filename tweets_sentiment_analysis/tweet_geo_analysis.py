@@ -1,6 +1,7 @@
 import sentiment_mod as s
 import tweet_preprocessor as prep
 import language_detector as lang
+import re
 
 class TweetGeo:
 	def __init__(self, id, created_at, text, time_zone, latitude, longitude, country_code):
@@ -17,6 +18,7 @@ tweets = open('data/tweets_1000_geo_clean.csv', 'r')
 # the classification of the tweet (pos|neg), the date and
 # the location
 classified_tweets = open('output/classified_1000_tweets.csv', 'a')
+all_words = open('output/all_words.txt', 'a') # write every tweet word
 
 # l = 'created_at, text, time_zone, latitude, longitude, contry_code'
 #cont = 0
@@ -35,10 +37,12 @@ for l in tweets:
 		tweet_lang = lang.detect_language(tg.text)
 		tweet_classification = s.sentiment(tg.text)[0]
 		classified_tweets.write(tweet_classification + ',' + tg.id + ',' + tg.created_at + ',' + tweet_lang + ',' + tg.text + ',' + tg.time_zone + ',' + tg.latitude + ',' + tg.longitude + ',' + tg.country_code)
-#		cont+=1
-#	else:
-#		cont += 1
-#		break
+		list_of_words = re.sub("[^\w]", " ",  text).split()
+		for word in list_of_words:
+			if (tweet_lang == 'english'):
+				if ((word != 'AT_USER') and (word != 'URL')):
+					all_words.write(id + ',' + word + '\n')
 
 tweets.close()
 classified_tweets.close()
+all_words.close()
