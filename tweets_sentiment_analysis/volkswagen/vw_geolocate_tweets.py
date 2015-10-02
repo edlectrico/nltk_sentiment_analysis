@@ -4,7 +4,7 @@ import sys
 # import language_detector as lang_detector
 
 # Input DataFrames
-vw_original = pd.read_csv('vw_clean_en_rechecked.csv')
+vw_original = pd.read_csv('output/vw_clean_en_rechecked.csv')
 locations = pd.read_csv('../data/cities_geo.csv')
 
 vw = pd.DataFrame(data=vw_original)
@@ -29,8 +29,8 @@ for c_index, c_row in cities.iterrows():
   except KeyboardInterrupt:
     print 'KeyboradInterrupt exception raised: Generating out file...'
     # print 'Writing to file'
-    vw_geo.to_csv('vw_clean_en_geo.csv')
+    vw_geo.to_csv('output/vw_clean_en_geo.csv')
     sys.exit()
 
 print 'Writing to file'
-vw_geo.to_csv('vw_clean_en_geo.csv')
+vw_geo.to_csv('output/vw_clean_en_geo.csv')

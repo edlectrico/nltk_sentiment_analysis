@@ -4,7 +4,7 @@ import tweet_preprocessor as preprocessor
 import pandas as pd
 import sys
 
-vw_original = pd.read_csv('vw_clean_en.csv')
+vw_original = pd.read_csv('input/vw_clean_en.csv')
 vw = pd.DataFrame(data=vw_original)
 
 vw_out = pd.DataFrame()
@@ -26,8 +26,9 @@ for index, row in vw.iterrows():
 
   except KeyboardInterrupt:
     print 'Generating file'
-    vw_out.to_csv('vw_clean_en_rechecked.csv')
+    vw_out.to_csv('output/vw_clean_en_rechecked.csv')
     sys.exit()
 
 print 'Generating file'
-vw_out.to_csv('vw_clean_en_rechecked.csv')
+vw_out.to_csv('output/vw_clean_en_rechecked.csv')
+
