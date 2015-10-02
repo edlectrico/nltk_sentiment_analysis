@@ -5,7 +5,7 @@ import sys
 
 # Input DataFrames
 vw_original = pd.read_csv('vw_clean_en_rechecked.csv')
-locations = pd.read_csv('data/cities_geo.csv')
+locations = pd.read_csv('../data/cities_geo.csv')
 
 vw = pd.DataFrame(data=vw_original)
 cities = pd.DataFrame(data=locations)
