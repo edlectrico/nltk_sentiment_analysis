@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import language_detector as lang_detector
 import tweet_preprocessor as preprocessor
 
